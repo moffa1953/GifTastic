@@ -20,10 +20,16 @@
              $("#select-search").on("click", function(event) {
                   event.preventDefault();
                   var animal = $("#search-input").val();
-                  var arraySize = buttonArray.length;
-                  buttonArray[arraySize] = animal;
+                  var animalFound = buttonArray.indexOf(animal);
+                  console.log(animalFound)
+                  if(animalFound >= 0) {
+                    alert("The animal was previously selected");
+                    return
+                  }
+                  buttonArray.push(animal)
                   buildButtons();
                   displayPix(animal);
+                  $("#search-form").trigger("reset");
              });
 
              // this handles button function
